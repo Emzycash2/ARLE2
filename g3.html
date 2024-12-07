@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar .nav-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navbar .nav-links ul li {
+            margin-left: 20px;
+        }
+
+        .navbar .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .nav-links ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Game container */
+        .game-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the game options */
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .choice {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .choice:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Status message */
+        #status {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        /* Restart button styling */
+        #restart-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #restart-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">ARLE</a>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Game1</a></li>
+                <li><a href="g2r.html">Game2</a></li>
+                <li><a href="#">Game3</a></li>
+                <li><a href="team.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <h1>Rock, Paper, Scissors</h1>
+        <div class="choices">
+            <div class="choice" id="rock">Rock</div>
+            <div class="choice" id="paper">Paper</div>
+            <div class="choice" id="scissors">Scissors</div>
+        </div>
+        <p id="status">Choose your move!</p>
+        <button id="restart-btn">Restart</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ARLE. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Select all elements
+        const rockButton = document.getElementById('rock');
+        const paperButton = document.getElementById('paper');
+        const scissorsButton = document.getElementById('scissors');
+        const status = document.getElementById('status');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Choices array for computer
+        const choices = ['rock', 'paper', 'scissors'];
+
+        // Function to determine the result
+        const determineWinner = (userChoice, computerChoice) => {
+            if (userChoice === computerChoice) {
+                return 'It\'s a tie!';
+            }
+
+            if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                return 'You win!';
+            }
+
+            return 'You lose!';
+        };
+
+        // Function to handle the game logic
+        const playGame = (userChoice) => {
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            const result = determineWinner(userChoice, computerChoice);
+            status.textContent = `You chose ${userChoice}. The computer chose ${computerChoice}. ${result}`;
+        };
+
+        // Add event listeners for the choices
+        rockButton.addEventListener('click', () => playGame('rock'));
+        paperButton.addEventListener('click', () => playGame('paper'));
+        scissorsButton.addEventListener('click', () => playGame('scissors'));
+
+        // Restart the game
+        restartBtn.addEventListener('click', () => {
+            status.textContent = 'Choose your move!';
+        });
+    </script>
+</body>
+</html>

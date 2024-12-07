@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - MyWebsite</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links ul li a:hover {
+            color: #333;
+        }
+
+        .navbar .hamburger {
+            display: none;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .team-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .team-card {
+            background: #fff;
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .team-card p {
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #4CAF50;
+                border-radius: 8px;
+                padding: 20px;
+            }
+
+            .navbar .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .navbar .hamburger span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                margin: 6px auto;
+                background-color: white;
+            }
+
+            .navbar .nav-links.active {
+                display: block;
+            }
+
+            .team-cards {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">ARLE</a></div>
+        <div class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Game1</a></li>
+                <li><a href="g2r.html">Game2</a></li>
+                <li><a href="g3.html">Game3</a></li>
+                <li><a href="team.html">otfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Meet Our Amazing Team</h2>
+        <div class="team-cards">
+            <!-- Team Member 1: Team Manager -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x200" alt="Team Manager">
+                <h3>Mr. David</h3>
+                <p>Team Manager</p>
+                <p>Leading the team with vision and strategy to ensure the success of all projects.</p>
+            </div>
+            <!-- Team Member 2: Assistant -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x200" alt="Assistant">
+                <h3>Mrs. Jessica</h3>
+                <p>Assistant Manager</p>
+                <p>Supporting the team in all administrative and operational tasks with efficiency.</p>
+            </div>
+            <!-- Team Member 3: Developer 1 -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x200" alt="Developer 1">
+                <h3>Adeshina Tuja</h3>
+                <p>Developer 1</p>
+                <p>Frontend Developer focused on creating seamless and engaging user interfaces.</p>
+            </div>
+            <!-- Team Member 4: Developer 2 -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x200" alt="Developer 2">
+                <h3>Emmanuel Adeshina</h3>
+                <p>Developer 2</p>
+                <p>Backend Developer with expertise in building scalable and efficient systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ARLE. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

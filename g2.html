@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Game board layout */
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for each cell */
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cell:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Status message */
+        #status {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        /* Restart button styling */
+        #restart-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #restart-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tic-Tac-Toe</h1>
+        <div id="game-board" class="game-board">
+            <!-- 9 Cells for the Tic-Tac-Toe grid -->
+            <div class="cell" data-cell="0"></div>
+            <div class="cell" data-cell="1"></div>
+            <div class="cell" data-cell="2"></div>
+            <div class="cell" data-cell="3"></div>
+            <div class="cell" data-cell="4"></div>
+            <div class="cell" data-cell="5"></div>
+            <div class="cell" data-cell="6"></div>
+            <div class="cell" data-cell="7"></div>
+            <div class="cell" data-cell="8"></div>
+        </div>
+        <button id="restart-btn">Restart</button>
+        <p id="status">Player X's turn</p>
+    </div>
+
+    <script>
+        // Select all cells and status message
+        const cells = document.querySelectorAll('.cell');
+        const status = document.getElementById('status');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Player turn indicator
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+
+        // Check if there's a winner
+        const checkWinner = () => {
+            const winPatterns = [
+                [0, 1, 2], // Top row
+                [3, 4, 5], // Middle row
+                [6, 7, 8], // Bottom row
+                [0, 3, 6], // Left column
+                [1, 4, 7], // Middle column
+                [2, 5, 8], // Right column
+                [0, 4, 8], // Diagonal
+                [2, 4, 6], // Diagonal
+            ];
+
+            for (const pattern of winPatterns) {
+                const [a, b, c] = pattern;
+                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    gameActive = false;
+                    status.textContent = `${currentPlayer} wins!`;
+                    return;
+                }
+            }
+
+            // Check for a tie
+            if (!gameBoard.includes('')) {
+                gameActive = false;
+                status.textContent = 'It\'s a Tie!';
+            }
+        };
+
+        // Handle click on each cell
+        const handleCellClick = (index) => {
+            if (gameBoard[index] === '' && gameActive) {
+                gameBoard[index] = currentPlayer;
+                cells[index].textContent = currentPlayer;
+                checkWinner();
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                if (gameActive) {
+                    status.textContent = `${currentPlayer}'s turn`;
+                }
+            }
+        };
+
+        // Add click event listeners to all cells
+        cells.forEach((cell, index) => {
+            cell.addEventListener('click', () => handleCellClick(index));
+        });
+
+        // Reset the game
+        const resetGame = () => {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            gameActive = true;
+            cells.forEach(cell => cell.textContent = '');
+            status.textContent = `${currentPlayer}'s turn`;
+        };
+
+        // Restart button functionality
+        restartBtn.addEventListener('click', resetGame);
+    </script>
+</body>
+</html>
