@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Interactive Home Page</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links ul li a:hover {
+            color: #333;
+        }
+
+        .navbar .hamburger {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #6e7e88, #3a4e61);
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out 0.5s;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #c7431d;
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 60px 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .games-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .games {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .game-card {
+            background: #fff;
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .game-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #4CAF50;
+                border-radius: 8px;
+                padding: 20px;
+            }
+
+            .navbar .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .navbar .hamburger span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                margin: 6px auto;
+                background-color: white;
+            }
+
+            .navbar .nav-links.active {
+                display: block;
+            }
+
+            .games {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">ARLE</a></div>
+        <div class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Game1</a></li>
+                <li><a href="g2r.html">Game2</a></li>
+                <li><a href="g3.html">Game3</a></li>
+                <li><a href="team.html">portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Our Interactive Home Page!</h1>
+        <p>Explore the amazing world of modern web design and functionality.</p>
+        <button class="cta-button">Get Started</button>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section">
+        <h2>Check Out Our Exciting Games</h2>
+        <div class="games">
+            <!-- Game 1: Code Guessing Game -->
+            <a href="index"><div class="game-card">
+                <img src="https://via.placeholder.com/250x150" alt="Game 1">
+                <h3>Game 1: <br> Code Guessing</h3>
+                <p>Guess the code and get an interesting response!</p>
+            </div></a>
+
+            <!-- Game 2: X and O Game -->
+            <a href="g2r.html"><div class="game-card">
+                <img src="https://via.placeholder.com/250x150" alt="Game 2">
+                <h3>Game 2: <BR> X and O</h3>
+                <p>Play a classic game of Tic-Tac-Toe with a twist!</p>
+            </div></a>
+
+            <!-- Game 3: Rock Paper Scissors -->
+            <a href="g3.html"><div class="game-card">
+                <img src="https://via.placeholder.com/250x150" alt="Game 3">
+                <h3>Game 3: Rock, Paper, Scissors</h3>
+                <p>Challenge yourself in a fun game of Rock, Paper, Scissors!</p>
+            </div></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ARLE. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
