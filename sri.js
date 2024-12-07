@@ -108,3 +108,12 @@ closeButton.addEventListener('click', hidePopup);
 function hidePopup() {
     popup.style.display = 'none';
 }
+
+// Get the hamburger and nav-links elements
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+// Add event listener for the hamburger icon
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
