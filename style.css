@@ -1,4 +1,4 @@
-/* Basic Reset */
+//* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -176,36 +176,56 @@ body {
 }
 
 /* Responsive Styles */
+/* Mobile View (hamburger and navbar toggle) */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
+    /* Initially hide the nav links on mobile */
     .nav-links {
         display: none;
         width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px; /* Adjust based on the navbar height */
+        left: 0;
         text-align: center;
+        padding-top: 20px;
     }
 
-    .nav-links.active {
+    /* Show the links vertically */
+    .nav-links ul {
         display: flex;
         flex-direction: column;
+        gap: 10px;
     }
 
-    .nav-links ul {
-        flex-direction: column;
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 0;
+        font-size: 18px;
     }
 
-    .nav-links ul li {
-        margin: 10px 0;
+    .nav-links a:hover {
+        background-color: #575757;
+        border-radius: 5px;
     }
 
+    /* Display hamburger icon */
     .hamburger {
         display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
     }
 
-    .form-container {
-        width: 80%;
+    .hamburger .bar {
+        width: 25px;
+        height: 4px;
+        background-color: white;
+        border-radius: 2px;
+    }
+
+    /* When active class is added, display the nav links */
+    .nav-links.active {
+        display: flex;
     }
 }
